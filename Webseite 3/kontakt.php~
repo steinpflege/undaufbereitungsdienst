@@ -1,0 +1,34 @@
+<?php
+// Fehleranzeige aktivieren
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Prüfen, ob das Formular abgeschickt wurde
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Formularwerte erfassen
+    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+    // Überprüfen, ob die Felder nicht leer sind
+    if (!empty($name) && !empty($email) && !empty($message)) {
+        // E-Mail-Daten
+        $to = 'deineemail@domain.de';
+        $subject = 'Neue Nachricht von ' . $name;
+        $body = "Name: $name\nE-Mail: $email\n\nNachricht:\n$message";
+        $headers = "From: $email";
+
+        // E-Mail senden
+        if (mail($to, $subject, $body, $headers)) {
+            // Erfolgreich gesendet, weiterleiten zu danke.html
+            header('Location: danke.html');
+            exit();
+        } else {
+            echo 'Es gab ein Problem beim Senden der E-Mail.';
+        }
+    } else {
+        echo 'Bitte füllen Sie alle Felder aus.';
+    }
+}
+?>

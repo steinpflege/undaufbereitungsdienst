@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steinpflege- und Aufbereitungsdienst</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #e0e0e0;
+            color: #2e4d3b;
+        }
+        header {
+            background-color: #2e4d3b;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f0f0f0;
+        }
+        header img {
+            max-height: 80px;
+            margin-right: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #365942;
+            padding: 15px 0;
+        }
+        nav a {
+            color: #f0f0f0;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            color: #2e4d3b;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 20px;
+        }
+        .before-after-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .before-after-container div {
+            width: 45%;
+            text-align: center;
+        }
+        .before-after-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .before-after-label {
+            font-size: 1.2em;
+            color: #333;
+            margin: 10px 0;
+        }
+        .price-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .price-banner {
+            background-color: #ffffff;
+            border: 2px solid #ddd;
+            padding: 20px;
+            font-size: 1.3em;
+            color: #333;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+        .price-standard {
+            border-color: #4a6d41;
+        }
+        .price-verfugung {
+            border-color: #5c9a6e;
+        }
+        .price-tiefenimpraegnierung {
+            border-color: #7aab8c;
+        }
+        .discount {
+            color: #4a6d41;
+            font-size: 1em;
+            font-weight: normal;
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #4a6d41;
+            border-radius: 5px;
+            background-color: #e8f5e9;
+        }
+        footer {
+            background-color: #2e4d3b;
+            color: #f0f0f0;
+            padding: 30px;
+            text-align: center;
+            font-size: 1em;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer .phone-number {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .contact-form-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .contact-form, .consultation-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form h2, .consultation-info h2 {
+            font-size: 1.8em;
+            color: #2e4d3b;
+            margin-bottom: 20px;
+        }
+        .contact-form label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            display: block;
+            color: #2e4d3b;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        .contact-form button {
+            background-color: #2e4d3b;
+            color: #f0f0f0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #365942;
+        }
+        .consultation-info p {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .before-after-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .before-after-container div {
+                width: 100%;
+            }
+            .contact-form-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="bilder/logo.png" alt="Logo">
+        <h1>Steinpflege- und Aufbereitungsdienst</h1>
+    </header>
+
+    <nav>
+        <a href="#leistungen">Unsere Leistungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#hochdruckreinigung">Hochdruckreinigung</a>
+        <a href="#dreckbekaempfung">Dreckbekämpfung</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <div class="container">
+        <div id="leistungen" class="section">
+            <h2>Unsere Leistungen</h2>
+            <div class="before-after-container">
+                <div>
+                    <img src="https://via.placeholder.com/500x750?text=Vorher+Bild" alt="Vorher Bild">
+                    <p class="before-after-label">Vorher</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/500x750?text=Nachher+Bild" alt="Nachher Bild">
+                    <p class="before-after-label">Nachher</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="preise" class="section">
+            <h2>Preise</h2>
+            <div class="price-container">
+                <div class="price-banner price-standard">
+                    <h3>Standard Reinigung</h3>
+                    <p>6,50 €/m²</p>
+                </div>
+                <div class="price-banner price-verfugung">
+                    <h3>Reinigung + Verfugung</h3>
+                    <p>10,50 €/m²</p>
+                    <small>(3 Farben auswählbar)</small>
+                </div>
+                <div class="price-banner price-tiefenimpraegnierung">
+                    <h3>Reinigung + Verfugung + Tiefenimprägnierung</h3>
+                    <p>14,50 €/m²</p>
+                </div>
+            </div>
+            <p class="discount">10% Rabatt für Neukunden!</p>
+        </div>
+
+        <div id="hochdruckreinigung" class="section">
+            <h2>Hochdruckreinigung</h2>
+            <p>Unsere Hochdruckreinigung entfernt hartnäckige Verschmutzungen und bringt Ihre Steinflächen wieder zum Strahlen. Mit modernster Technik und umweltfreundlichen Verfahren sorgen wir für ein optimales Ergebnis.</p>
+            <img src="https://via.placeholder.com/800x400?text=Hochdruckreinigung+in+Aktion" alt="Hochdruckreinigung" style="width: 80%; border-radius: 8px;">
+        </div>
+
+        <div id="dreckbekaempfung" class="section">
+            <h2>Dreckbekämpfung</h2>
+            <p>Wir bieten umfassende Dreckbekämpfungsdienste an, um sicherzustellen, dass Ihre Außenbereiche stets sauber und einladend sind. Mit professioneller Ausrüstung und effizienten Methoden beseitigen wir selbst hartnäckigsten Schmutz.</p>
+            <img src="https://via.placeholder.com/800x400?text=Dreckbekämpfung" alt="Dreckbekämpfung" style="width: 80%; border-radius: 8px;">
+        </div>
+
+        <div id="kontakt" class="section">
+            <h2>Kontaktieren Sie uns</h2>
+            <div class="contact-form-container">
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        
+                        <button type="submit">Absenden</button>
+                    </form>
+                </div>
+                <div class="consultation-info">
+                    <h2>Kostenlose Beratung</h2>
+                    <p>Wir bieten Ihnen eine unverbindliche und kostenlose Beratung an, um Ihre individuellen Bedürfnisse und Anforderungen zu besprechen. Kontaktieren Sie uns noch heute, um einen Termin zu vereinbaren!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Steinpflege- und Aufbereitungsdienst. Alle Rechte vorbehalten.</p>
+        <p class="phone-number">Telefon: +49 00000000</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
